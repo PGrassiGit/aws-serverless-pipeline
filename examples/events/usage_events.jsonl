@@ -1,0 +1,3 @@
+{"event_id":"E001","customer_id":"C001","subscription_id":"S001","event_type":"api_call","quantity":15500}
+{"event_id":"E002","customer_id":"C002","subscription_id":"S002","event_type":"api_call","quantity":2600}
+{"event_id":"E003","customer_id":"C003","subscription_id":"S003","event_type":"api_call","quantity":-1}

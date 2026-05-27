@@ -62,6 +62,12 @@ def process_usage_lines(lines: list[str]) -> dict[str, int]:
     return {"valid": valid, "invalid": invalid}
 
 
+def route_usage_record(record: dict, source_key: str) -> str:
+    if validate_usage_event(record):
+        return failed_key(source_key)
+    return processed_key(source_key)
+
+
 def lambda_handler(event: dict, context: object | None = None) -> dict:
     objects = parse_s3_event(event)
     return {

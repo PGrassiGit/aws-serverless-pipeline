@@ -1,0 +1,14 @@
+{
+  "Records": [
+    {
+      "s3": {
+        "bucket": {
+          "name": "portfolio-usage-raw"
+        },
+        "object": {
+          "key": "raw/usage/events-2026-02-01.jsonl"
+        }
+      }
+    }
+  ]
+}

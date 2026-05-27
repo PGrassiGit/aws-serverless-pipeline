@@ -47,6 +47,8 @@ The tests cover S3 event parsing, processed and failed key routing, usage event 
 ## Docs
 
 - [Architecture](docs/architecture.md)
+- [Terraform notes](docs/terraform_notes.md)
+- [Sample S3 event](examples/events/s3_usage_event.json)
 
 ## Portuguese
 

@@ -4,6 +4,7 @@ from aws_serverless_pipeline.handler import (
     parse_s3_event,
     process_usage_lines,
     processed_key,
+    route_usage_record,
     validate_usage_event,
 )
 
@@ -45,6 +46,12 @@ def test_validate_usage_event_rejects_negative_quantity() -> None:
     assert errors == ["quantity cannot be negative"]
 
 
+def test_validate_usage_event_rejects_missing_fields() -> None:
+    errors = validate_usage_event({"event_id": "E1"})
+
+    assert "missing fields" in errors[0]
+
+
 def test_process_usage_lines_counts_valid_and_invalid() -> None:
     result = process_usage_lines(
         [
@@ -54,6 +61,12 @@ def test_process_usage_lines_counts_valid_and_invalid() -> None:
     )
 
     assert result == {"valid": 1, "invalid": 1}
+
+
+def test_route_usage_record_sends_invalid_record_to_failed_prefix() -> None:
+    route = route_usage_record({"event_id": "E1"}, "raw/usage/events.jsonl")
+
+    assert route == "failed/usage/events.jsonl"
 
 
 def test_lambda_handler_returns_received_objects() -> None:
